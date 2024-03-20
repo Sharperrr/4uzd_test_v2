@@ -15,5 +15,10 @@
         <version>5.6.3</version>
         <scope>test</scope>
     </dependency>
+	  <dependency>
+	  	<groupId>3nd</groupId>
+	  	<artifactId>3nd</artifactId>
+	  	<version>0.0.1-SNAPSHOT</version>
+	  </dependency>
   </dependencies>
 </project>
