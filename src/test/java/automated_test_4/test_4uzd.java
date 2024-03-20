@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,36 +18,16 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Main {
-//	@Test
-	public static void main(String[] args) throws InterruptedException
+public class test_4uzd {
+
+	
+	@BeforeClass
+	public static void CreateUser()
 	{
 		System.setProperty("webdriver.edge.driver", "C:\\Users\\simas\\msedgedriver.exe");
 		EdgeDriver driver = new EdgeDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 3);
 		
-		driver.manage().window().maximize();
-		CreateUser(driver, wait);
-		
-		
-		
-		for(int t = 1; t < 3; ++t)
-		{
-			driver = new EdgeDriver();
-			wait = new WebDriverWait(driver, 5);
-			driver.manage().window().maximize();
-			Testing(driver, wait, t);
-		}
-		
-		//driver = new EdgeDriver();
-		//wait = new WebDriverWait(driver, 5);
-		//driver.manage().window().maximize();
-		//Testing(driver, wait, 2);
-		
-	}
-	
-	static void CreateUser(EdgeDriver driver, WebDriverWait wait)
-	{
 		Wait<EdgeDriver> fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(500))
@@ -91,11 +71,24 @@ public class Main {
 		
 		driver.findElement(By.xpath("//input[@value='Continue']")).click();
 		driver.close();
-		
 	}
 	
-	static void Testing(EdgeDriver driver, WebDriverWait wait, int dataId)
+	@Test
+	public void CallTests()
 	{
+		for(int t = 1; t < 3; ++t)
+		{
+			Testing(t);
+		}
+	}
+	
+	static void Testing(int dataId)
+	{
+		System.setProperty("webdriver.edge.driver", "C:\\Users\\simas\\msedgedriver.exe");
+		EdgeDriver driver = new EdgeDriver();
+		WebDriverWait wait = new WebDriverWait(driver, 3);
+		driver.manage().window().maximize();
+		
 		Wait<EdgeDriver> fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofMillis(1000))
